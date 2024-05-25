@@ -1,0 +1,201 @@
+snippet template
+\documentclass{report}
+
+\input{~/latex/template/preamble.tex}
+\input{~/latex/template/macros.tex}
+
+\title{\Huge{$1}}
+\author{\huge{Matt Warner}}
+\date{\huge{$2}}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{$3}
+\lhead{\leftmark}
+\cfoot{\thepage}
+% \usepackage[default]{sourcecodepro}
+% \usepackage[T1]{fontenc}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\pgfpagesdeclarelayout{boxed}
+{
+  \edef\pgfpageoptionborder{0pt}
+}
+{
+  \pgfpagesphysicalpageoptions
+  {%
+    logical pages=1,%
+  }
+  \pgfpageslogicalpageoptions{1}
+  {
+    border code=\pgfsetlinewidth{1.5pt}\pgfstroke,%
+    border shrink=\pgfpageoptionborder,%
+    resized width=.95\pgfphysicalwidth,%
+    resized height=.95\pgfphysicalheight,%
+    center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
+  }%
+}
+
+\pgfpagesuselayout{boxed}
+
+\begin{document}
+	\maketitle
+
+
+\end{document}
+endsnippet
+
+# snippet template
+# \documentclass{report}
+#
+# \input{~/latex/template/preamble.tex}
+# \input{~/latex/template/macros.tex}
+#
+# \title{\Huge{$1}}
+# \author{\huge{$2}}
+# \date{\huge{$3}}
+#
+# \begin{document}
+# 	\maketitle
+# 	\begin{Large}
+# 		\noindent \textbf{$4}
+# 	\end{Large}
+# 	$5
+# \end{document}
+# endsnippet
+snippet tikz
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+			restrict y to domain=-10:10,
+			restrict x to domain=-10:10,
+			samples=200, % 0 if you dont need lines
+			xmin=-10,
+			xmax=10,
+			ymin=-10,
+			ymax=10,
+			axis lines=middle,
+			xtick={1,2,3,4,5,6,7,8,9,10},
+			ytick={1,2,3,4,5,6,7,8,9,10},
+			xlabel={$x$},
+			ylabel={$y$},
+			%grid=both % Grid lines
+			]
+			\addplot[color=red]{};
+			\end{axis} 
+		\end{tikzpicture}
+	\end{center}
+endsnippet
+
+snippet line
+\line(1,0){490}
+endsnippet
+
+snippet box
+\begin{mdframed}
+	$1
+\end{mdframed}
+endsnippet
+
+snippet item
+\begin{itemize}
+	$1
+\end{itemize}
+endsnippet
+
+snippet mathsection
+\pagebreak \bigbreak \noindent
+\begin{Large}
+    \begin{mdframed}
+        \begin{center}
+            \textbf{$1}
+        \end{center}
+    \end{mdframed}
+\end{Large}
+\begin{Large}
+    \begin{center}
+        \textbf{$2}
+    \end{center}
+\end{Large}
+\line(1,0){490}
+
+\bigbreak \noindent \bigbreak \noindent \bigbreak \noindent 
+$3
+endsnippet
+
+snippet new 
+\begin{$1}
+  $2
+\end{$1}
+endsnippet
+snippet td "exponent" i
+^{$1}
+endsnippet
+
+snippet mk "Math"
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+   snip.rv = ''
+else:
+   snip.rv = ''
+`$2
+endsnippet
+
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+snippet // "Fraction" i
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet ali
+\begin{align*}
+	$1
+\end{align*}
+endsnippet
+
+snippet prob "problem"
+\line(1,0){450}
+
+\begin{center}
+\begin{large}
+
+\end{large}
+\end{center}
+
+\line(1,0){450}
+endsnippet
+
+snippet def "definition"
+\thmcon{
+	\textbf{\underline{Defintion}}
+	\vspace{3mm}
+
+
+}
+endsnippet
+
+snippet ex "example"
+\ex{}{
+
+}
+endsnippet
+
+snippet fig "figure"
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{ }
+\end{figure}
+endsnippet
+
+snippet mat "matrix"
+\[
+
+\begin{bmatrix}
+
+\end{bmatrix}
+\]
+endsnippet
