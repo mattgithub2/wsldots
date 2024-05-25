@@ -31,10 +31,3 @@ set -U fish_user_paths $HOME/.bin $HOME/.local/bin $HOME/Applications $fish_user
 alias fmaster="~/.scripts/fetch-master/fm6000 -f ~/.scripts/fetch-master/astronaut.txt -c blue"
 fmaster
 alias c='clear;fmaster'
-
-# fzf custom bindings (cant use alt on wsl2)
-fzf_configure_bindings --directory=\cp
-fzf_configure_bindings --history=\cr
-# fzf_configure_bindings
-# fzf_configure_bindings --directory=\cd
-# fzf_configure_bindings --directory=\cd
